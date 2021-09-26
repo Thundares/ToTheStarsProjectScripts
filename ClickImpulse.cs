@@ -19,14 +19,19 @@ public class ClickImpulse : MonoBehaviour
         }
 
         //else
+        //direction of the Force
         Vector2 direction = new Vector2(
             this.transform.position.x - Player.transform.position.x,
             this.transform.position.y - Player.transform.position.y);
 
         Debug.Log(direction.ToString());
 
+        //apply force
         Rigidbody2D playerRB = Player.GetComponent<Rigidbody2D>();
         playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
+
+        VariablesManager.bEnableSpawn = true;
         Destroy(this.gameObject);
+       
     }
 }
