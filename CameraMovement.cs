@@ -29,7 +29,7 @@ public class CameraMovement : MonoBehaviour
         }
         else if (transform.position.y > Player.transform.position.y + fOffset) 
         {
-            yPosition = transform.position.y - 0.1f;
+            yPosition = transform.position.y - 20 * Time.deltaTime;
             isMoving = false;
         }
         if (isMoving) 
