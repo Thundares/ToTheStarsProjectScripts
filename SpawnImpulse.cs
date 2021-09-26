@@ -9,6 +9,7 @@ public class SpawnImpulse : MonoBehaviour
     [SerializeField] private GameObject impulsePrefab;
     [SerializeField] private Rigidbody2D rbPlayer;
     [SerializeField] public double dDistance = 5;
+    [SerializeField] private float fImpulseIncrementDivisor = 5;
 
     UnityEvent eSpawn;
 
@@ -39,7 +40,7 @@ public class SpawnImpulse : MonoBehaviour
         Debug.Log(xPosition);
         GameObject newImpulse = Instantiate(impulsePrefab, new Vector3(xPosition, rbPlayer.position.y + 6, 0), Quaternion.identity);
         newImpulse.GetComponent<Rigidbody2D>().velocity = rbPlayer.velocity;
-        newImpulse.GetComponent<ClickImpulse>().ForceValue *= (VariablesManager.iHitNumber / 10) + 1;
+        newImpulse.GetComponent<ClickImpulse>().ForceValue *= (VariablesManager.iHitNumber / fImpulseIncrementDivisor) + 1;
 
     }
 }
