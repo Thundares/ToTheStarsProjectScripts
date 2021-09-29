@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClickImpulse : MonoBehaviour
 {
     [SerializeField] public float ForceValue;
+    [SerializeField] public bool TRUEIMPULSE;
 
     private void OnMouseDown()
     {
@@ -24,13 +25,19 @@ public class ClickImpulse : MonoBehaviour
             this.transform.position.x - Player.transform.position.x,
             this.transform.position.y - Player.transform.position.y);
 
-        Debug.Log(direction.ToString());
-
         //apply force
         Rigidbody2D playerRB = Player.GetComponent<Rigidbody2D>();
-        playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
+        if (TRUEIMPULSE)
+        {
+            playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
+            VariablesManager.bEnableSpawn = true;
+            VariablesManager.iHitNumber++;
+        }
+        else 
+        {
+            playerRB.AddForce(direction * ForceValue * -1, ForceMode2D.Impulse);
+        }
 
-        VariablesManager.bEnableSpawn = true;
         Destroy(this.gameObject);
        
     }

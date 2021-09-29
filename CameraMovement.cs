@@ -22,7 +22,9 @@ public class CameraMovement : MonoBehaviour
     {
         //follow the player
         xPosition = Player.transform.position.x;
+        this.transform.position = new Vector3(xPosition, Player.transform.position.y + 5, -10);
 
+        /*awfull camera. Need rework
         if (transform.position.y < Player.transform.position.y - fOffset)
         {
             isMoving = true;
@@ -37,5 +39,6 @@ public class CameraMovement : MonoBehaviour
             yPosition = transform.position.y + 40 * Time.deltaTime;
         }
         this.transform.position = new Vector3(xPosition, yPosition, -10);
+        */
     }
 }
