@@ -6,6 +6,8 @@ public class ClickImpulse : MonoBehaviour
 {
     [SerializeField] public float ForceValue;
     [SerializeField] public bool TRUEIMPULSE;
+    [SerializeField] private float fLifeTime = 3;
+    [SerializeField] private bool bFirst = false;
 
     private void OnMouseDown()
     {
@@ -39,6 +41,19 @@ public class ClickImpulse : MonoBehaviour
         }
 
         Destroy(this.gameObject);
-       
+    }
+
+    // despawn object
+    private void FixedUpdate()
+    {
+        if (fLifeTime < 0)
+        {
+            if(!bFirst)
+                Destroy(this.gameObject);
+        }
+        else 
+        {
+            fLifeTime -= 1 * Time.deltaTime;
+        }
     }
 }

@@ -10,6 +10,7 @@ public class SpawnImpulse : MonoBehaviour
     [SerializeField] private GameObject falseImpulsePrefab;
     [SerializeField] private Rigidbody2D rbPlayer;
     [SerializeField] public double dDistance = 5;
+    [SerializeField] private double dBtweenDist = 1.5;
     [SerializeField] private float fImpulseIncrementDivisor;
 
     UnityEvent eSpawn;
@@ -61,7 +62,7 @@ public class SpawnImpulse : MonoBehaviour
         int infiniteController = 0;
 
         //while too close to the true impulse
-        while (xFPosition > xPosition - 1 && xFPosition < xPosition + 1 && infiniteController < 4) 
+        while (xFPosition > xPosition - dBtweenDist && xFPosition < xPosition + dBtweenDist && infiniteController < 4) 
         {
             //generate new position
             xFPosition = (float)(rbPlayer.position.x + (Random.value - 0.5) * dDistance);
@@ -72,6 +73,7 @@ public class SpawnImpulse : MonoBehaviour
         //did not found a spot to spawn in time
         if (infiniteController >= 4) 
         {
+            Debug.Log("Infinite Controller activated");
             return;
         }
 
