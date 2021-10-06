@@ -31,9 +31,14 @@ public class ClickImpulse : MonoBehaviour
         Rigidbody2D playerRB = Player.GetComponent<Rigidbody2D>();
         if (TRUEIMPULSE)
         {
+            DifficultController dc = new DifficultController();
             playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
             VariablesManager.bEnableSpawn = true;
             VariablesManager.iHitNumber++;
+            
+            //increase gravity
+            if(VariablesManager.iHitNumber % 5 == 0)
+                dc.IncrementDif();
         }
         else 
         {

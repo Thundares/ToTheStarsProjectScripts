@@ -11,4 +11,5 @@ public static class VariablesManager
 
     public static int iHitNumber = 0;
     public static int iRounds = 0;
+    public static int iDifficult = 0;
 }

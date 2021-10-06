@@ -7,6 +7,7 @@ public class GameOverManager : MonoBehaviour
 {
     [SerializeField] float fGameOverCondition = -16;
 
+
     UnityEvent eGameOver;
 
     Rigidbody2D rbPlayer;
@@ -25,7 +26,7 @@ public class GameOverManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (rbPlayer.velocity.y < fGameOverCondition) 
+        if (rbPlayer.velocity.y < fGameOverCondition * (VariablesManager.iDifficult + 1)) 
         {
             eGameOver.Invoke();
         }
