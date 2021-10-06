@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GameOverManager : MonoBehaviour
 {
     [SerializeField] float fGameOverCondition = -16;
-
+    public bool fallGround;
 
     UnityEvent eGameOver;
 
@@ -15,6 +15,7 @@ public class GameOverManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fallGround = false;
         if (eGameOver == null) 
         {
             eGameOver = new UnityEvent();
@@ -26,7 +27,7 @@ public class GameOverManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (rbPlayer.velocity.y < fGameOverCondition * (VariablesManager.iDifficult + 1)) 
+        if (rbPlayer.velocity.y < fGameOverCondition || fallGround) 
         {
             eGameOver.Invoke();
         }
