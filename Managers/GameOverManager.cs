@@ -23,7 +23,7 @@ public class GameOverManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (rbPlayer.velocity.y < fGameOverCondition) 
         {
@@ -33,6 +33,7 @@ public class GameOverManager : MonoBehaviour
 
     void GameOver() 
     {
+        VariablesManager.bGameOver = true;
         Debug.Log("GameOver event");
     }
 }

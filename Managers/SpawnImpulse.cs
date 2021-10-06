@@ -24,7 +24,7 @@ public class SpawnImpulse : MonoBehaviour
         eSpawn.AddListener(Spawn);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (VariablesManager.bEnableSpawn)
         {
