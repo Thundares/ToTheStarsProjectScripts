@@ -12,7 +12,9 @@ public class SpawnImpulse : MonoBehaviour
     [SerializeField] public double dDistance = 5;
     [SerializeField] private double dBtweenDist = 1.5;
     [SerializeField] private float fImpulseIncrementDivisor;
+    [SerializeField] private float fMaxImpulseValue;
 
+    private float impulseForce;
     UnityEvent eSpawn;
 
     public void Start()
@@ -43,7 +45,9 @@ public class SpawnImpulse : MonoBehaviour
         Debug.Log("Spawn impulse in " + xPosition);
         GameObject newImpulse = Instantiate(impulsePrefab, new Vector3(xPosition, rbPlayer.position.y + 6, 0), Quaternion.identity);
         newImpulse.GetComponent<Rigidbody2D>().velocity = rbPlayer.velocity;
-        newImpulse.GetComponent<ClickImpulse>().ForceValue *= (VariablesManager.iHitNumber / fImpulseIncrementDivisor) + 1;
+        impulseForce = (VariablesManager.iHitNumber / fImpulseIncrementDivisor) + 1;
+        impulseForce = impulseForce > fMaxImpulseValue ? fMaxImpulseValue : impulseForce;
+        newImpulse.GetComponent<ClickImpulse>().ForceValue *= impulseForce;
 
         //spawn false impulse
         int manyFalses = Mathf.FloorToInt(VariablesManager.iHitNumber / 5);
