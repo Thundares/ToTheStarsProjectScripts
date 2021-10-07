@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class SceneManagerObject : MonoBehaviour
+public class SceneManagerObject : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] AdsInGame adMan;
+    [SerializeField] AdsInGame adMan = null;
 
     // Update is called once per frame
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         if (VariablesManager.bGameOver) 
         {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
 
-    [SerializeField] private float fSmooth;
-    [SerializeField] private Vector3 offset;
+    [SerializeField] private float fSmooth = 0;
+    [SerializeField] private Vector3 offset = Vector3.zero;
     private GameObject Player;
     private Vector3 actualPosition;
     private Vector3 targetPosition;

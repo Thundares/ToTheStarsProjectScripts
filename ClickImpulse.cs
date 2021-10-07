@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ClickImpulse : MonoBehaviour
+public class ClickImpulse : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] public float ForceValue;
-    [SerializeField] public bool TRUEIMPULSE;
-    [SerializeField] private float fLifeTime = 3;
+    [SerializeField] public float ForceValue = 0;
+    [SerializeField] public bool TRUEIMPULSE = false;
+    [SerializeField] private float fLifeTime = 0;
     [SerializeField] private bool bFirst = false;
 
-    private void OnMouseDown()
-    {
+    public void OnPointerDown(PointerEventData eventData)
+{
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
         // if the player is above this object.

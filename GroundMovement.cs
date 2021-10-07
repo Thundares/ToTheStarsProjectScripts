@@ -7,8 +7,8 @@ public class GroundMovement : MonoBehaviour
 
     // script that always let the ground under the player.
 
-    [SerializeField] private GameObject Player;
-    [SerializeField] private GameOverManager gmOver;
+    [SerializeField] private GameObject Player = null;
+    [SerializeField] private GameOverManager gmOver = null;
     
     // Update is called once per frame
     void FixedUpdate()

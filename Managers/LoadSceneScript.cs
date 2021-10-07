@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LoadSceneScript : MonoBehaviour
 {
 
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider slider = null;
 
     private void Start()
     {      

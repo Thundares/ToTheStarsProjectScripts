@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DifficultController : MonoBehaviour
+public class DifficultController
 {
     private Rigidbody2D rbPlayer;
 

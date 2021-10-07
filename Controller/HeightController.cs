@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HeightController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private Text numberText;
-    [SerializeField] private GameObject panel;
+    [SerializeField] private Transform player = null;
+    [SerializeField] private Text numberText = null;
+    [SerializeField] private GameObject panel = null;
     private RectTransform panelRect;
     float panelWidth;
 

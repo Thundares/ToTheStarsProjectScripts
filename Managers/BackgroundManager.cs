@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 // based on Code Monkey video for Parallax
@@ -9,12 +8,10 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField ]private float fOffsetX = 1;
     [Range(0, 1)]
     [SerializeField] private float fOffsetY = 1;
-    [SerializeField] private Transform camPosition;
+    [SerializeField] private Transform camPosition = null;
 
     private Renderer backgroundTexture;
     private Vector2 offset;
-
-    private float x = 0; 
 
     //near ground objects
     [Header("Ground Objects")]

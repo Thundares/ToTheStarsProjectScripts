@@ -6,13 +6,13 @@ using UnityEngine.Events;
 public class SpawnImpulse : MonoBehaviour
 {
 
-    [SerializeField] private GameObject impulsePrefab;
-    [SerializeField] private GameObject falseImpulsePrefab;
-    [SerializeField] private Rigidbody2D rbPlayer;
+    [SerializeField] private GameObject impulsePrefab = null;
+    [SerializeField] private GameObject falseImpulsePrefab = null;
+    [SerializeField] private Rigidbody2D rbPlayer = null;
     [SerializeField] public double dDistance = 5;
     [SerializeField] private double dBtweenDist = 1.5;
-    [SerializeField] private float fImpulseIncrementDivisor;
-    [SerializeField] private float fMaxImpulseValue;
+    [SerializeField] private float fImpulseIncrementDivisor = 0;
+    [SerializeField] private float fMaxImpulseValue = 0;
 
     private float impulseForce;
     UnityEvent eSpawn;
