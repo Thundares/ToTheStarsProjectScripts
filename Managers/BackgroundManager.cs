@@ -15,16 +15,18 @@ public class BackgroundManager : MonoBehaviour
 
     //near ground objects
     [Header("Ground Objects")]
-    [SerializeField] private List<GameObject> gObjects = new List<GameObject>();
+    [SerializeField] private List<Renderer> gObjects = new List<Renderer>();
     //sky objects
     [Header("Sky Objects")]
-    [SerializeField] private List<GameObject> sObjects = new List<GameObject>();
+    [SerializeField] private List<bgObject> sObjects = new List<bgObject>();
+    //[SerializeField] private List<Renderer> sObjects = new List<Renderer>();
+    //[SerializeField] private List<float> fParallaxs = new List<float>();
     //space objects
     [Header("Universe Objects")]
-    [SerializeField] private List<GameObject> uObjects = new List<GameObject>();
+    [SerializeField] private List<Renderer> uObjects = new List<Renderer>();
     //cats
     [Header("Cats Objects")]
-    [SerializeField] private List<GameObject> cObjects = new List<GameObject>();
+    [SerializeField] private List<Renderer> cObjects = new List<Renderer>();
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +41,11 @@ public class BackgroundManager : MonoBehaviour
         offset = new Vector2(camPosition.position.x * fOffsetX / transform.localScale.x, 
             camPosition.position.y * fOffsetY / transform.localScale.y);
         backgroundTexture.material.mainTextureOffset = offset;
+
+        foreach (bgObject bg in sObjects) 
+        {
+            bg.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bg.fParallax / transform.localScale.x,
+                camPosition.position.y * bg.fParallax / transform.localScale.y);
+        }
     }
 }

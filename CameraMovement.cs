@@ -7,14 +7,9 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float fSmooth = 0;
     [SerializeField] private Vector3 offset = Vector3.zero;
-    private GameObject Player;
+    [SerializeField] private GameObject Player;
     private Vector3 actualPosition;
     private Vector3 targetPosition;
-    
-    private void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player");
-    }
 
     // Update is called once per frame
     void FixedUpdate()
