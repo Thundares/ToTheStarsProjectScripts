@@ -27,6 +27,7 @@ public class AdsInGame : MonoBehaviour
             eNormalAd = new UnityEvent();
         }
         eNormalAd.AddListener(() => Advertisement.Show("Interstitial_Android"));
+        DontDestroyOnLoad(this.gameObject);
     }
          
     public void CheckAd()

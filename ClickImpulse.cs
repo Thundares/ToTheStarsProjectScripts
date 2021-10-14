@@ -5,7 +5,7 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] public float ForceValue = 0;
     [SerializeField] public bool TRUEIMPULSE = false;
-    [SerializeField] private float fLifeTime = 0;
+    [SerializeField] private float fLifeTime = 3;
     [SerializeField] private bool bFirst = false;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -42,6 +42,8 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
         else 
         {
             playerRB.AddForce(direction * ForceValue * -1, ForceMode2D.Impulse);
+            //click on false causes stop time:
+            Player.GetComponent<TimeController>().StopTime();
         }
 
         Destroy(this.gameObject);
