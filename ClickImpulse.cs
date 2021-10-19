@@ -10,6 +10,7 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
 {
+        GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundsManager>().PlayEffect(0);
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
         // if the player is above this object.
@@ -30,6 +31,7 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
         Rigidbody2D playerRB = Player.GetComponent<Rigidbody2D>();
         if (TRUEIMPULSE)
         {
+
             DifficultController dc = new DifficultController();
             playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
             VariablesManager.bEnableSpawn = true;
