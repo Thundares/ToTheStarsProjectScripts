@@ -15,7 +15,7 @@ public class BackgroundManager : MonoBehaviour
 
     //near ground objects
     [Header("Ground Objects")]
-    [SerializeField] private List<Renderer> gObjects = new List<Renderer>();
+    [SerializeField] private List<bgObject> gObjects = new List<bgObject>();
     //sky objects
     [Header("Sky Objects")]
     [SerializeField] private List<bgObject> sObjects = new List<bgObject>();
@@ -46,6 +46,11 @@ public class BackgroundManager : MonoBehaviour
         {
             bg.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bg.fParallax / transform.localScale.x,
                 camPosition.position.y * bg.fParallax / transform.localScale.y);
+        }
+        foreach (bgObject bgGround in gObjects) 
+        {
+            bgGround.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bgGround.fParallax / transform.localScale.x,
+                bgGround.rend.material.mainTextureOffset.y);
         }
     }
 }
