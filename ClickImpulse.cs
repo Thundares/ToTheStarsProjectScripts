@@ -3,10 +3,19 @@ using UnityEngine.EventSystems;
 
 public class ClickImpulse : MonoBehaviour, IPointerDownHandler
 {
+
     [SerializeField] public float ForceValue = 0;
-    [SerializeField] public bool TRUEIMPULSE = false;
     [SerializeField] private float fLifeTime = 3;
+    [SerializeField] public bool TRUEIMPULSE = false;
+    [Header("Only the first")]
     [SerializeField] private bool bFirst = false;
+    [Header("Animation")]
+    [SerializeField] private Animator playerAnim = null;
+
+    private void Start()
+    {
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
 
     public void OnPointerDown(PointerEventData eventData)
 {
@@ -31,6 +40,8 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
         Rigidbody2D playerRB = Player.GetComponent<Rigidbody2D>();
         if (TRUEIMPULSE)
         {
+            //player animation
+            playerAnim.SetTrigger("click");
 
             DifficultController dc = new DifficultController();
             playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
@@ -40,10 +51,19 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
             //increase gravity
             if(VariablesManager.iHitNumber % 5 == 0)
                 dc.IncrementDif();
+
+            //set global target
+            VariablesManager.eTarget = Target.right;
         }
         else 
         {
+            //player animation
+            playerAnim.SetTrigger("wrongClick");
             playerRB.AddForce(direction * ForceValue * -1, ForceMode2D.Impulse);
+
+            //set global target
+            VariablesManager.eTarget = Target.wrong;
+
             //click on false causes stop time:
             Player.GetComponent<TimeController>().StopTime();
         }

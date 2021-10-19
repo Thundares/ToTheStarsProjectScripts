@@ -21,6 +21,7 @@ public class GroundMovement : MonoBehaviour
         Debug.Log("Collision: "+ collision.gameObject.tag.ToString());
         if (collision.gameObject.CompareTag("Player") && VariablesManager.iHitNumber > 0) 
         {
+            collision.gameObject.GetComponent<Animator>().SetTrigger("fall");
             gmOver.fallGround = true;
             Debug.Log("Fall ground: " + gmOver.fallGround);
         }
