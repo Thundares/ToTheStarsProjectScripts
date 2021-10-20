@@ -6,7 +6,8 @@ using UnityEngine.Audio;
 public class SoundsManager : MonoBehaviour
 {
     [Header("Sources")]
-    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioSource musicSource = null;
+    [SerializeField] private AudioSource seSource = null;
     [Header("BGM")]
     [SerializeField] private AudioClip musicGround1;
     [SerializeField] private AudioClip musicGround2;
@@ -28,7 +29,7 @@ public class SoundsManager : MonoBehaviour
         if (audioManagers.Length == 1) 
         {
             RandomMusic();
-            audioSource.Play();
+            musicSource.Play();
             DontDestroyOnLoad(this.gameObject);
         }
         else 
@@ -64,19 +65,19 @@ public class SoundsManager : MonoBehaviour
     {
         if (index == 0) 
         {
-            audioSource.PlayOneShot(splash, 0.2f);
+            seSource.PlayOneShot(splash, 0.2f);
         }
     }
 
     public IEnumerator FadeOut() 
     {
         float currentTime = 0;
-        float initialVolume = audioSource.volume;
+        float initialVolume = musicSource.volume;
 
         while (currentTime < fadeOutTime) 
         {
             currentTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(initialVolume, 0, currentTime / fadeOutTime);
+            musicSource.volume = Mathf.Lerp(initialVolume, 0, currentTime / fadeOutTime);
             yield return null;
         }
         yield break;
@@ -94,14 +95,14 @@ public class SoundsManager : MonoBehaviour
         }
         else if (index == 1) 
         {
-            audioSource.clip = musicSky1;
+            musicSource.clip = musicSky1;
         }
-        audioSource.Play();
+        musicSource.Play();
 
         while (currentTime < fadeOutTime) 
         {
             currentTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(0,1, currentTime / fadeOutTime);
+            musicSource.volume = Mathf.Lerp(0,1, currentTime / fadeOutTime);
             yield return null;
         }
         yield break;
@@ -112,11 +113,11 @@ public class SoundsManager : MonoBehaviour
         random = Random.Range(0, 2);
         if (random == 0)
         {
-            audioSource.clip = musicGround1;
+            musicSource.clip = musicGround1;
         }
         else
         {
-            audioSource.clip = musicGround2;
+            musicSource.clip = musicGround2;
         }
     }
 }

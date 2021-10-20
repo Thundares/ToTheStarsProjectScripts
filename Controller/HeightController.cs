@@ -22,7 +22,7 @@ public class HeightController : MonoBehaviour
         numberText.text = "H: " + VariablesManager.dHeight.ToString("N0") + " M";
         mult = (int)Math.Floor(Math.Log10(VariablesManager.dHeight));
         mult = mult < 1 ? 1 : mult;
-        panelWidth = (float)mult * 55 + 275;
+        panelWidth = (float)mult * 65 + 375;
         if (float.IsNaN(panelWidth)) 
         {
             panelWidth = 375;
