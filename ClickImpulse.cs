@@ -11,10 +11,12 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
     [SerializeField] private bool bFirst = false;
     [Header("Animation")]
     [SerializeField] private Animator playerAnim = null;
+    private Animator impulseAnim = null;
 
     private void Start()
     {
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        impulseAnim = this.gameObject.GetComponent<Animator>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -42,6 +44,7 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
         {
             //player animation
             playerAnim.SetTrigger("click");
+            impulseAnim.SetTrigger("surprise");
 
             DifficultController dc = new DifficultController();
             playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
@@ -59,6 +62,8 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
         {
             //player animation
             playerAnim.SetTrigger("wrongClick");
+            impulseAnim.SetTrigger("laugh");
+
             playerRB.AddForce(direction * ForceValue * -1, ForceMode2D.Impulse);
 
             //set global target
@@ -68,7 +73,7 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
             Player.GetComponent<TimeController>().StopTime();
         }
 
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 0.3f);
     }
 
     // despawn object
