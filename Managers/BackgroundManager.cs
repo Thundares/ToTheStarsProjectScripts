@@ -4,10 +4,12 @@ using UnityEngine;
 // based on Code Monkey video for Parallax
 public class BackgroundManager : MonoBehaviour
 {
+    [Header("Offset")]
     [Range(0,1)]
     [SerializeField ]private float fOffsetX = 1;
     [Range(0, 1)]
     [SerializeField] private float fOffsetY = 1;
+    [Header("Camera")]
     [SerializeField] private Transform camPosition = null;
 
     private Renderer backgroundTexture;
