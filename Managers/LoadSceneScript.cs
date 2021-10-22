@@ -11,16 +11,13 @@ public class LoadSceneScript : MonoBehaviour
     private void Start()
     {      
         Debug.Log("Loading next scene");
-        VariablesManager.iTotalBees = PlayerPrefs.GetInt("totalBees");
-        VariablesManager.iTotalRounds = PlayerPrefs.GetInt("totalRounds");
-        VariablesManager.dRecord = PlayerPrefs.GetFloat("record");
         StartCoroutine(LoadAsyncProgress());
     }
 
     private IEnumerator LoadAsyncProgress() 
     {
         AsyncOperation loadingNext = SceneManager.LoadSceneAsync(1);
-
+        VariablesManager.Load();
         while (!loadingNext.isDone) 
         {
             slider.value = Mathf.Clamp01(loadingNext.progress / 0.9f);

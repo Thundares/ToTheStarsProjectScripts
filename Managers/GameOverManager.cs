@@ -33,9 +33,7 @@ public class GameOverManager : MonoBehaviour
     {
         VariablesManager.bGameOver = true;
         VariablesManager.iTotalRounds++;
-        PlayerPrefs.SetInt("totalBees", VariablesManager.iTotalBees);
-        PlayerPrefs.SetInt("totalRounds", VariablesManager.iTotalRounds);
-        PlayerPrefs.SetFloat("record", (float)VariablesManager.dRecord);
+        VariablesManager.Save();
         Debug.Log("GameOver event");
     }
 }

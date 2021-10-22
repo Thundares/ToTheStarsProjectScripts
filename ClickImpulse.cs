@@ -70,6 +70,9 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
             //set global target
             VariablesManager.eTarget = Target.wrong;
 
+            //ser global variable
+            VariablesManager.iTotalWasp++;
+
             //click on false causes stop time:
             Player.GetComponent<TimeController>().StopTime();
         }
