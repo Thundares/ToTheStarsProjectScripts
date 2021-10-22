@@ -11,6 +11,9 @@ public class LoadSceneScript : MonoBehaviour
     private void Start()
     {      
         Debug.Log("Loading next scene");
+        VariablesManager.iTotalBees = PlayerPrefs.GetInt("totalBees");
+        VariablesManager.iTotalRounds = PlayerPrefs.GetInt("totalRounds");
+        VariablesManager.dRecord = PlayerPrefs.GetFloat("record");
         StartCoroutine(LoadAsyncProgress());
     }
 

@@ -50,6 +50,7 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
             playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
             VariablesManager.bEnableSpawn = true;
             VariablesManager.iHitNumber++;
+            VariablesManager.iTotalBees++;
             
             //increase gravity
             if(VariablesManager.iHitNumber % 5 == 0)

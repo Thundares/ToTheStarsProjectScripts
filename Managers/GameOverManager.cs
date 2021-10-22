@@ -10,7 +10,6 @@ public class GameOverManager : MonoBehaviour
 
     Rigidbody2D rbPlayer;
 
-    // Start is called before the first frame update
     void Start()
     {
         fallGround = false;
@@ -22,7 +21,6 @@ public class GameOverManager : MonoBehaviour
         rbPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (rbPlayer.velocity.y < fGameOverCondition || fallGround) 
@@ -34,6 +32,10 @@ public class GameOverManager : MonoBehaviour
     void GameOver() 
     {
         VariablesManager.bGameOver = true;
+        VariablesManager.iTotalRounds++;
+        PlayerPrefs.SetInt("totalBees", VariablesManager.iTotalBees);
+        PlayerPrefs.SetInt("totalRounds", VariablesManager.iTotalRounds);
+        PlayerPrefs.SetFloat("record", (float)VariablesManager.dRecord);
         Debug.Log("GameOver event");
     }
 }

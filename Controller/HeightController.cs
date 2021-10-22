@@ -15,18 +15,24 @@ public class HeightController : MonoBehaviour
     {
         panelRect = panel.GetComponent<RectTransform>();
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         VariablesManager.dHeight = player.position.y / 10;
         numberText.text = "H: " + VariablesManager.dHeight.ToString("N0") + " M";
         mult = (int)Math.Floor(Math.Log10(VariablesManager.dHeight));
         mult = mult < 1 ? 1 : mult;
-        panelWidth = (float)mult * 65 + 375;
+        panelWidth = (float)mult * 35 + 275;
         if (float.IsNaN(panelWidth)) 
         {
             panelWidth = 375;
         }
         panelRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, panelWidth);
+
+        //check record
+        if (VariablesManager.dRecord < VariablesManager.dHeight) 
+        {
+            VariablesManager.dRecord = VariablesManager.dHeight;
+        }
     }
 }
