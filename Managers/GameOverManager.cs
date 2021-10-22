@@ -32,8 +32,6 @@ public class GameOverManager : MonoBehaviour
     void GameOver() 
     {
         VariablesManager.bGameOver = true;
-        VariablesManager.iTotalRounds++;
-        VariablesManager.Save();
         Debug.Log("GameOver event");
     }
 }

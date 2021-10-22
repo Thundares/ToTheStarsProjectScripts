@@ -6,7 +6,7 @@ public class SceneManagerObject : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] AdsInGame adMan = null;
 
-    // Update is called once per frame
+    // Called after click on GameOver state
     public void OnPointerDown(PointerEventData eventData)
     {
         if (VariablesManager.bGameOver) 
@@ -15,7 +15,8 @@ public class SceneManagerObject : MonoBehaviour, IPointerDownHandler
             Debug.Log("Trying to reload");
             VariablesManager.iHitNumber = 0;
             VariablesManager.iRounds++;
-
+            VariablesManager.iTotalRounds++;
+            VariablesManager.Save();
             VariablesManager.bGameOver = false;
 
             SceneManager.LoadScene(1);
