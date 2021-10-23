@@ -10,7 +10,7 @@ public class LoadSceneScript : MonoBehaviour
 
     private void Start()
     {      
-        Debug.Log("Loading next scene");
+        //Debug.Log("Loading next scene");
         StartCoroutine(LoadAsyncProgress());
     }
 

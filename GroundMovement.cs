@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
@@ -18,12 +16,12 @@ public class GroundMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision: "+ collision.gameObject.tag.ToString());
+        //Debug.Log("Collision: "+ collision.gameObject.tag.ToString());
         if (collision.gameObject.CompareTag("Player") && VariablesManager.iHitNumber > 0) 
         {
             collision.gameObject.GetComponent<Animator>().SetTrigger("fall");
             gmOver.fallGround = true;
-            Debug.Log("Fall ground: " + gmOver.fallGround);
+            //Debug.Log("Fall ground: " + gmOver.fallGround);
         }
     }
 }

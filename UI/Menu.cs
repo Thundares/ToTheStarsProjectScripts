@@ -34,6 +34,6 @@ public class Menu : MonoBehaviour
                 Time.fixedDeltaTime = 0;
             }
         }
-        Debug.Log(animator.GetBool("Open"));
+        //Debug.Log(animator.GetBool("Open"));
 ;    }
 }

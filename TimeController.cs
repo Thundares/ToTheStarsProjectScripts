@@ -41,11 +41,11 @@ public class TimeController : MonoBehaviour
     {
         Time.fixedDeltaTime = 0.0f;
         Time.timeScale = 0.0f;
-        Debug.Log("Time scale before = " + Time.timeScale);
+        //Debug.Log("Time scale before = " + Time.timeScale);
         yield return new WaitForSecondsRealtime(pauseTime);
         Time.fixedDeltaTime = slowSpeed * 0.02f;
         Time.timeScale = slowSpeed;
-        Debug.Log("Time scale after = " + Time.timeScale);
+        //Debug.Log("Time scale after = " + Time.timeScale);
         paused = true;
     }
 

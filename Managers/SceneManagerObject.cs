@@ -12,7 +12,7 @@ public class SceneManagerObject : MonoBehaviour, IPointerDownHandler
         if (VariablesManager.bGameOver) 
         {
             adMan.CheckAd();
-            Debug.Log("Trying to reload");
+            //Debug.Log("Trying to reload");
             VariablesManager.iHitNumber = 0;
             VariablesManager.iRounds++;
             VariablesManager.iTotalRounds++;

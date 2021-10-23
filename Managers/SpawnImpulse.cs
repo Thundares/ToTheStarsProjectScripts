@@ -42,7 +42,7 @@ public class SpawnImpulse : MonoBehaviour
     {
         //spawn true impulse
         float xPosition = (float)(rbPlayer.position.x + (Random.value - 0.5) * dDistance);
-        Debug.Log("Spawn impulse in " + xPosition);
+        //Debug.Log("Spawn impulse in " + xPosition);
         GameObject newImpulse = Instantiate(impulsePrefab, new Vector3(xPosition, rbPlayer.position.y + 6, 0), Quaternion.identity);
         newImpulse.GetComponent<Rigidbody2D>().velocity = rbPlayer.velocity;
         impulseForce = (VariablesManager.iHitNumber / fImpulseIncrementDivisor) + 1;
@@ -51,8 +51,8 @@ public class SpawnImpulse : MonoBehaviour
 
         //spawn false impulse
         int manyFalses = Mathf.FloorToInt(VariablesManager.iHitNumber / 5);
-        Debug.Log("Many falses = " + manyFalses);
-        Debug.Log("iHitNumber = " + VariablesManager.iHitNumber);
+        //Debug.Log("Many falses = " + manyFalses);
+        //Debug.Log("iHitNumber = " + VariablesManager.iHitNumber);
         for (int i = 0; i < manyFalses; i++) 
         {
             SpawnFalseImpulse(xPosition);
@@ -71,19 +71,19 @@ public class SpawnImpulse : MonoBehaviour
             //generate new position
             xFPosition = (float)(rbPlayer.position.x + (Random.value - 0.5) * dDistance);
             infiniteController++;
-            Debug.Log("Calculating False Position...");
+            //Debug.Log("Calculating False Position...");
         }
 
         //did not found a spot to spawn in time
         if (infiniteController >= 4) 
         {
-            Debug.Log("Infinite Controller activated");
+            //Debug.Log("Infinite Controller activated");
             return;
         }
 
         //instantiate
         GameObject newFalse = Instantiate(falseImpulsePrefab, new Vector3(xFPosition, rbPlayer.position.y + 6, 0), Quaternion.identity);
-        Debug.Log("Spawn False in "+ xFPosition);
+        //Debug.Log("Spawn False in "+ xFPosition);
         newFalse.GetComponent<Rigidbody2D>().velocity = rbPlayer.velocity;
     }
 }
