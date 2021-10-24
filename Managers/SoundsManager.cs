@@ -18,7 +18,7 @@ public class SoundsManager : MonoBehaviour
     [SerializeField] private float fadeOutTime = 0;
 
     private int random = 0;
-    private bool over100 = false;
+    private bool over1000 = false;
     private GameObject[] audioManagers;
 
     // Start is called before the first frame update
@@ -39,24 +39,24 @@ public class SoundsManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void CheckMusic()
     {
-        if (!over100)
+        if (!over1000)
         {
-            if (VariablesManager.dHeight > 100)
+            if (VariablesManager.dHeight > 1000)
             {
-                over100 = true;
+                over1000 = true;
                 StartCoroutine(FadeOut());
                 StartCoroutine(FadeIn(1));
             }
         }
         else 
         {
-            if (VariablesManager.dHeight < 100) 
+            if (VariablesManager.dHeight < 1000) 
             {
                 StartCoroutine(FadeOut());
                 StartCoroutine(FadeIn(0));
-                over100 = false;
+                over1000 = false;
             }
         }
     }

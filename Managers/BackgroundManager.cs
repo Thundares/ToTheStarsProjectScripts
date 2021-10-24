@@ -21,8 +21,6 @@ public class BackgroundManager : MonoBehaviour
     //sky objects
     [Header("Sky Objects")]
     [SerializeField] private List<bgObject> sObjects = new List<bgObject>();
-    //[SerializeField] private List<Renderer> sObjects = new List<Renderer>();
-    //[SerializeField] private List<float> fParallaxs = new List<float>();
     //space objects
     [Header("Universe Objects")]
     [SerializeField] private List<Renderer> uObjects = new List<Renderer>();
@@ -36,19 +34,20 @@ public class BackgroundManager : MonoBehaviour
         backgroundTexture = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    public void BGUpdate()
     {
-        //set offset of the background material
+        /*//set offset of the background material/*
         offset = new Vector2(camPosition.position.x * fOffsetX / transform.localScale.x, 
             camPosition.position.y * fOffsetY / transform.localScale.y);
         backgroundTexture.material.mainTextureOffset = offset;
+        */
 
-        foreach (bgObject bg in sObjects) 
+        foreach (bgObject bg in sObjects)
         {
             bg.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bg.fParallax / transform.localScale.x,
                 camPosition.position.y * bg.fParallax / transform.localScale.y);
         }
+
         foreach (bgObject bgGround in gObjects) 
         {
             bgGround.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bgGround.fParallax / transform.localScale.x,

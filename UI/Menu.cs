@@ -1,39 +1,53 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    /*
-    public void OpenMenu(Canvas toOpen) 
+    int openHash = Animator.StringToHash("Open");
+
+    public void ToggleOpnAnimator()
     {
-        toOpen.enabled = true;
+        if (animator.GetBool(openHash))
+        {
+            OpenMenu();
+        }
+        else
+        {
+            CloseMenu();
+        }
+; }
+
+    // function used to wait for animation
+    public void LateDisableGameObject(float time)
+    {
+        StartCoroutine(enumerator(time));
     }
 
-    public void CloseMenu(Canvas toClose) 
+    private IEnumerator enumerator(float time)
     {
-        toClose.enabled = false;
+        yield return new WaitForSecondsRealtime(time);
+        this.gameObject.SetActive(false);
     }
-    */
-    public void ToggleOpnAnimator() 
+
+    // functionalities to open and close
+    private void OpenMenu()
     {
-        if (animator.GetBool("Open"))
+        animator.SetBool(openHash, false);
+        if (this.CompareTag("FirstMenu"))
         {
-            animator.SetBool("Open", false);
-            if (this.CompareTag("FirstMenu")) 
-            {
-                Time.timeScale = 1;
-                Time.fixedDeltaTime = 0.02f;
-            }
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
         }
-        else 
+    }
+
+    private void CloseMenu() 
+    {
+        animator.SetBool(openHash, true);
+        if (this.CompareTag("FirstMenu"))
         {
-            animator.SetBool("Open", true);
-            if (this.CompareTag("FirstMenu")) 
-            {
-                Time.timeScale = 0;
-                Time.fixedDeltaTime = 0;
-            }
+            Time.timeScale = 0;
+            Time.fixedDeltaTime = 0;
         }
-        //Debug.Log(animator.GetBool("Open"));
-;    }
+    }
 }

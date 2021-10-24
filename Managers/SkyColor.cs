@@ -35,7 +35,7 @@ public class SkyColor : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void CheckSky()
     {
         if (VariablesManager.dHeight > 100000) 
         {

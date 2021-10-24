@@ -6,33 +6,32 @@ public class HeightController : MonoBehaviour
 {
     [SerializeField] private Transform player = null;
     [SerializeField] private Text numberText = null;
-    [SerializeField] private GameObject panel = null;
-    private RectTransform panelRect;
-    float panelWidth;
-    int mult;
+   // [SerializeField] private GameObject panel = null;
+    private double height = 0;
 
-    private void Start() 
+    public void CalculateHeight() 
     {
-        panelRect = panel.GetComponent<RectTransform>();
-    }
-    
-    void FixedUpdate()
-    {
-        VariablesManager.dHeight = player.position.y / 10;
-        numberText.text = "H: " + VariablesManager.dHeight.ToString("N0") + " M";
-        mult = (int)Math.Floor(Math.Log10(VariablesManager.dHeight));
-        mult = mult < 1 ? 1 : mult;
-        panelWidth = (float)mult * 35 + 275;
-        if (float.IsNaN(panelWidth)) 
+        height = player.position.y/10;
+        if (height > 50)
         {
-            panelWidth = 375;
+            height = 50 + (height-50) * height/40;
         }
-        panelRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, panelWidth);
-
-        //check record
-        if (VariablesManager.dRecord < VariablesManager.dHeight) 
+        if (height > 1000) 
         {
-            VariablesManager.dRecord = VariablesManager.dHeight;
+            height = 1000 + (height - 1000) * Math.Pow(height,1.3) / 1000;
+        }
+        VariablesManager.dHeight = height;
+    }
+
+    public void ChangeUIText() 
+    {
+        if (height < 1000)
+        {
+            numberText.text = "H: " + height.ToString("N0") + " M";
+        }
+        else 
+        {
+            numberText.text = "H: " + (height / 1000).ToString("N1") + " KM";
         }
     }
 }

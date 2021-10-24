@@ -1,9 +1,9 @@
 ﻿
 using UnityEngine;
 
-public class AchievManager : MonoBehaviour
+public static class AchievManager
 {
-    void LateUpdate()
+    public static void CheckAchiev()
     {
         if (!VariablesManager.bTitan && VariablesManager.dHeight >= 50) 
         {

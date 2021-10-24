@@ -21,7 +21,7 @@ public class GameOverManager : MonoBehaviour
         rbPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+    public void CheckGameOver()
     {
         if (rbPlayer.velocity.y < fGameOverCondition || fallGround) 
         {

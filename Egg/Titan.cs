@@ -7,7 +7,7 @@ public class Titan : MonoBehaviour
     [SerializeField] private AudioClip titanSe = null;
     private bool trigged = false;
 
-    private void LateUpdate()
+    public void CheckTitan()
     {
         if (VariablesManager.dHeight >= 50 && !trigged) 
         {
@@ -15,7 +15,7 @@ public class Titan : MonoBehaviour
             seSource.PlayOneShot(titanSe);
             GameObject titan = Instantiate(titanPrefab, GameObject.FindGameObjectWithTag("egg").transform);
             Destroy(titan, 10f);
-            Destroy(this, 10f);
+            this.gameObject.SetActive(false);
         }
     }
 }

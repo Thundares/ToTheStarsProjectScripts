@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Animator))]
 public class ClickImpulse : MonoBehaviour, IPointerDownHandler
 {
-
     [SerializeField] public float ForceValue = 0;
     [SerializeField] private float fLifeTime = 3;
     [SerializeField] public bool TRUEIMPULSE = false;
@@ -46,15 +46,10 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
             playerAnim.SetTrigger("click");
             impulseAnim.SetTrigger("surprise");
 
-            DifficultController dc = new DifficultController();
             playerRB.AddForce(direction * ForceValue, ForceMode2D.Impulse);
             VariablesManager.bEnableSpawn = true;
             VariablesManager.iHitNumber++;
             VariablesManager.iTotalBees++;
-            
-            //increase gravity
-            if(VariablesManager.iHitNumber % 5 == 0)
-                dc.IncrementDif();
 
             //set global target
             VariablesManager.eTarget = Target.right;
