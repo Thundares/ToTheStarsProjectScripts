@@ -31,6 +31,9 @@ public static class VariablesManager
     public static bool b50 = false;
     public static bool b100 = false;
 
+    //skin
+    public static bool bAranha = false;
+
     public static void Save() 
     {
         PlayerPrefs.SetInt("itotalBees", VariablesManager.iTotalBees);
@@ -51,8 +54,8 @@ public static class VariablesManager
     {
         iTotalBees = PlayerPrefs.GetInt("itotalBees");
         iTotalWasp = PlayerPrefs.GetInt("itotalWasp");
-        iTotalRounds = PlayerPrefs.GetInt("totalRounds");
-        dRecord = PlayerPrefs.GetFloat("record");
+        iTotalRounds = PlayerPrefs.GetInt("itotalRounds");
+        dRecord = PlayerPrefs.GetFloat("dRecord");
         bTitan = IToB(PlayerPrefs.GetInt("bTitan"));
         bSpider = IToB(PlayerPrefs.GetInt("bSpider"));
         bSpace = IToB(PlayerPrefs.GetInt("bSpace"));

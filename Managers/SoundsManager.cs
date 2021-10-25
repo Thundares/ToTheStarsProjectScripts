@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class SoundsManager : MonoBehaviour
 {
@@ -34,6 +32,7 @@ public class SoundsManager : MonoBehaviour
         }
         else 
         {
+            musicSource = this.GetComponent<AudioSource>();
             Destroy(audioManagers[1]);
         }
     }

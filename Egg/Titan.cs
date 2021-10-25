@@ -11,6 +11,7 @@ public class Titan : MonoBehaviour
     {
         if (VariablesManager.dHeight >= 50 && !trigged) 
         {
+            seSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
             trigged = true;
             seSource.PlayOneShot(titanSe);
             GameObject titan = Instantiate(titanPrefab, GameObject.FindGameObjectWithTag("egg").transform);

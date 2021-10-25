@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +13,11 @@ public class GameManager : MonoBehaviour
     [Header("Eggs")]
     [SerializeField] private Titan titan = null;
 
+    void Start() 
+    {
+        soundsManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundsManager>();
+    }
+    
 
     void Update()
     {
