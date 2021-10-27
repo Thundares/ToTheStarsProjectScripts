@@ -9,6 +9,7 @@ public class SkyColor : MonoBehaviour
     [SerializeField] private Material darkSky = null;
     [SerializeField] private Material space = null;
 
+    private bool spaceSky = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +35,12 @@ public class SkyColor : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     public void CheckSky()
     {
-        if (VariablesManager.dHeight > 100000) 
+        if (!spaceSky && VariablesManager.dHeight > 100000) 
         {
             renderer.material = space;
+            spaceSky = true;
         }
     }
 }

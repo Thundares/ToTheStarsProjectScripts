@@ -28,30 +28,44 @@ public class BackgroundManager : MonoBehaviour
     [Header("Cats Objects")]
     [SerializeField] private List<Renderer> cObjects = new List<Renderer>();
 
+    private bool _cloudActive = true;
+
     // Start is called before the first frame update
     void Start()
     {
+        _cloudActive = true;
         backgroundTexture = GetComponent<Renderer>();
     }
 
     public void BGUpdate()
     {
-        /*//set offset of the background material/*
-        offset = new Vector2(camPosition.position.x * fOffsetX / transform.localScale.x, 
-            camPosition.position.y * fOffsetY / transform.localScale.y);
-        backgroundTexture.material.mainTextureOffset = offset;
-        */
-
-        foreach (bgObject bg in sObjects)
+        if (_cloudActive)
         {
-            bg.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bg.fParallax / transform.localScale.x,
-                camPosition.position.y * bg.fParallax / transform.localScale.y);
+            foreach (bgObject bg in sObjects)
+            {
+                bg.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bg.fParallax / transform.localScale.x,
+                    camPosition.position.y * bg.fParallax / transform.localScale.y);
+            }
+
+            foreach (bgObject bgGround in gObjects)
+            {
+                bgGround.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bgGround.fParallax / transform.localScale.x,
+                    bgGround.rend.material.mainTextureOffset.y);
+            }
+
+            if (VariablesManager.dHeight >= 100000)
+            {
+                _cloudActive = false;
+                foreach (bgObject bg in sObjects)
+                {
+                    bg.rend.enabled = false;
+                }
+            }
+        }
+        else
+        {
+            backgroundTexture.material.mainTextureOffset = new Vector2(camPosition.position.x * fOffsetX, camPosition.position.y * fOffsetY);
         }
 
-        foreach (bgObject bgGround in gObjects) 
-        {
-            bgGround.rend.material.mainTextureOffset = new Vector2(camPosition.position.x * bgGround.fParallax / transform.localScale.x,
-                bgGround.rend.material.mainTextureOffset.y);
-        }
     }
 }

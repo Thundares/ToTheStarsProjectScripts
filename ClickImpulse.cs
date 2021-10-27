@@ -24,6 +24,9 @@ public class ClickImpulse : MonoBehaviour, IPointerDownHandler
         GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundsManager>().PlayEffect(0);
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 
+        //multiply force
+        ForceValue *= VariablesManager.fPowerMult;
+
         // if the player is above this object.
         if (Player.transform.position.y >= this.transform.position.y) 
         {

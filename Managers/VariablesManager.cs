@@ -20,6 +20,13 @@ public static class VariablesManager
     public static int iTotalRounds = 0;
     public static int iTotalBees = 0;
     public static int iTotalWasp = 0;
+    public static int iSpentBees = 0;
+
+    //Shop Variables
+    public static float fGravityMulti = 1;
+    public static float fGravityLimit = 0;
+    public static float fPowerMult = 1;
+    public static float fPowerLimit = 0;
 
     //player achiev
     public static bool bTitan = false;
@@ -48,6 +55,9 @@ public static class VariablesManager
         PlayerPrefs.SetInt("bWasp", BToI(bWasp));
         PlayerPrefs.SetInt("b50", BToI(b50));
         PlayerPrefs.SetInt("b100", BToI(b100));
+        PlayerPrefs.SetInt("ispentBees", iSpentBees);
+        PlayerPrefs.SetFloat("fgravityLimit", fGravityLimit);
+        PlayerPrefs.SetFloat("fpowerLimit", fPowerLimit);
     }
 
     public static void Load() 
@@ -64,6 +74,9 @@ public static class VariablesManager
         bWasp = IToB(PlayerPrefs.GetInt("bWasp"));
         b50 = IToB(PlayerPrefs.GetInt("b50"));
         b100 = IToB(PlayerPrefs.GetInt("b100"));
+        iSpentBees = PlayerPrefs.GetInt("ispentBees");
+        fGravityLimit = PlayerPrefs.GetFloat("fgravityLimit");
+        fPowerLimit = PlayerPrefs.GetFloat("fpowerLimit");
     }
 
     private static bool IToB(int oneOrZero) 

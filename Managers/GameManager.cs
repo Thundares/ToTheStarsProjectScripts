@@ -2,6 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D rbPlayer = null;
     [SerializeField] private DifficultController difficult = null;
     [Header("Managers and Controllers")]
     [SerializeField] private HeightController heightController = null;
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpawnImpulse spawnImpulse = null;
     [Header("Eggs")]
     [SerializeField] private Titan titan = null;
+    [Header("Transition Prefab")]
+    [SerializeField] private GameObject _transition = null;
+    [SerializeField] private float _spawnHeight = 0;
+
+    private bool _spawnedTransition = false;
+    private Rigidbody2D _instanceTransitionRB = null;
 
     void Start() 
     {
@@ -66,6 +73,19 @@ public class GameManager : MonoBehaviour
             if (VariablesManager.bEggsEnabled) 
             {
                 titan.CheckTitan();
+            }
+
+            //transition
+            if (!_spawnedTransition && VariablesManager.dHeight >= _spawnHeight)
+            {
+                var transition = Instantiate<GameObject>(_transition, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0), Quaternion.identity);
+                _instanceTransitionRB = transition.GetComponent<Rigidbody2D>();
+                _instanceTransitionRB.velocity = rbPlayer.velocity;
+                _spawnedTransition = true;
+            }
+            else if (_spawnedTransition) 
+            {
+                _instanceTransitionRB.velocity = rbPlayer.velocity;
             }
         }
     }

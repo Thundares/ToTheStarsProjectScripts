@@ -9,7 +9,7 @@ public class DifficultController : MonoBehaviour
     {
         if (rbPlayer.gravityScale < 6 && lastIncrement != VariablesManager.iHitNumber)
         {
-            rbPlayer.gravityScale += (float)0.5;
+            rbPlayer.gravityScale = (float)(0.5 + rbPlayer.gravityScale) * VariablesManager.fGravityMulti;
             VariablesManager.iDifficult++;
             lastIncrement = VariablesManager.iHitNumber;
         }
