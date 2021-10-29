@@ -38,4 +38,9 @@ public class Achiev : MonoBehaviour
             panels[0].SetActive(false);
         }
     }
+
+    public void TgglEggs() 
+    {
+        VariablesManager.bEggsEnabled = !VariablesManager.bEggsEnabled;
+    }
 }

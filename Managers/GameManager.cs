@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpawnImpulse spawnImpulse = null;
     [Header("Eggs")]
     [SerializeField] private Titan titan = null;
+    [SerializeField] private Spider spider = null;
+    [SerializeField] private Astral astral = null;
     [Header("Transition Prefab")]
     [SerializeField] private GameObject _transition = null;
     [SerializeField] private float _spawnHeight = 0;
@@ -73,6 +75,8 @@ public class GameManager : MonoBehaviour
             if (VariablesManager.bEggsEnabled) 
             {
                 titan.CheckTitan();
+                spider.CheckSpider();
+                astral.CheckAstral();
             }
 
             //transition
