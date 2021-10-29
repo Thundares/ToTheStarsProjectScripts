@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Titan titan = null;
     [SerializeField] private Spider spider = null;
     [SerializeField] private Astral astral = null;
+    [SerializeField] private AchievHUD achiev = null;
     [Header("Transition Prefab")]
     [SerializeField] private GameObject _transition = null;
     [SerializeField] private float _spawnHeight = 0;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
 
             //achiev check
             AchievManager.CheckAchiev();
+            achiev.NewAchiev();
 
             //gameover check
             gameOver.CheckGameOver();

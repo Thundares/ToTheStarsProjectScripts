@@ -5,6 +5,7 @@ public static class VariablesManager
     public static bool bGameOver = false;
     public static bool bEnableSpawn = false;
     public static bool bEggsEnabled = true;
+    public static bool bNewAch = false;
     
     public static double dHeight = 0;
 
